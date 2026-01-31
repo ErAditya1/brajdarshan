@@ -4,7 +4,7 @@ import { Filter, ChevronDown } from "lucide-react";
 import PlaceCard from "@/components/features/PlaceCard";
 import { Button } from "@/components/ui/button";
 import { places } from "@/lib/data";
-import PlacesHeader from "@/components/feature/PlaceHeader";
+import PlacesHeader from "@/components/features/PlaceHeader";
 import { useState } from "react";
 
 export default function PlaceListingPage() {

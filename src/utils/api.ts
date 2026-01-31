@@ -1,4 +1,4 @@
-import { projectId, publicAnonKey } from '/utils/supabase/info';
+import { projectId, publicAnonKey } from './supabase/info';
 
 const BASE_URL = `https://${projectId}.supabase.co/functions/v1/make-server-d4ef971a`;
 
@@ -37,7 +37,7 @@ export async function getBlogs() {
 }
 
 export async function createBooking(data: any) {
-  constZS res = await fetch(`${BASE_URL}/bookings`, { 
+  const res = await fetch(`${BASE_URL}/bookings`, { 
     method: 'POST', 
     headers,
     body: JSON.stringify(data)
