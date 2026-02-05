@@ -3,18 +3,23 @@ import Link from "next/link";
 import { Plus } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import DeleteGalleryImageButton from "@/components/DeleteGalleryImageButton";
 import GalleryImage from "@/models/GalleryImage";
 import { connectToDatabase } from "@/lib/db";
+import { getCurrentUser } from "@/lib/getCurrentUser";
 
 export default async function GalleryPage() {
   // ✅ Server-side DB call
   await connectToDatabase();
 
-  const images = await GalleryImage.find({
-    status: "published",
-  })
-    .sort({ publishedAt: -1, createdAt: -1 })
-    .lean();
+  const [images, currentUser] = await Promise.all([
+    GalleryImage.find({
+      status: "published",
+    })
+      .sort({ publishedAt: -1, createdAt: -1 })
+      .lean(),
+    getCurrentUser(),
+  ]);
 
   return (
     <main className="min-h-screen bg-background">
@@ -69,7 +74,16 @@ export default async function GalleryPage() {
               />
 
               {/* Overlay */}
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center relative">
+                {currentUser &&
+                  (currentUser.role === "admin" ||
+                    img.author?.toString() === currentUser.id) && (
+                    <div className="absolute top-2 right-2">
+                      <DeleteGalleryImageButton
+                        imageId={img._id.toString()}
+                      />
+                    </div>
+                  )}
                 <span className="text-white text-sm md:text-base font-medium text-center px-4">
                   {img.title}
                 </span>
