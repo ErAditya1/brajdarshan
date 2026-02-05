@@ -139,7 +139,7 @@ export const BookingWidget = ({ placeName, placeId }: { placeName: string, place
               <button 
                 type="submit" 
                 disabled={loading}
-                className="flex-[2] bg-[#E65100] hover:bg-[#D84B00] text-white py-3 rounded-lg font-bold text-sm transition-colors disabled:opacity-70"
+                className="flex-2 bg-[#E65100] hover:bg-[#D84B00] text-white py-3 rounded-lg font-bold text-sm transition-colors disabled:opacity-70"
               >
                 {loading ? 'Confirming...' : 'Confirm Request'}
               </button>

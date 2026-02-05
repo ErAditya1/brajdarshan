@@ -5,7 +5,21 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   // image optimazation
   images: {
-    domains: ['images.unsplash.com'],
+   
+    remotePatterns: [
+    {
+      protocol: "https",
+      hostname: "ik.imagekit.io",
+    },
+    {
+      protocol: "https",
+      hostname: "images.unsplash.com",
+    },
+    {
+      protocol: "https",
+      hostname: "media.istockphoto.com",
+    },
+  ],
   },
 };
 

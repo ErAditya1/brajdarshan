@@ -14,6 +14,8 @@ const geistMono = Geist_Mono({
 
 
 import { Inter, Merriweather } from 'next/font/google';
+import Provider from "@/components/Provider";
+import { ToastProvider } from "@/components/ui/toast-provider";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -115,8 +117,12 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={` ${inter.variable} ${merriweather.variable} `}
-      >
+      ><ToastProvider>
+        <Provider>
+
         {children}
+        </Provider>
+        </ToastProvider>
       </body>
     </html>
   );

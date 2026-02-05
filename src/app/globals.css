@@ -70,5 +70,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+.menu-item {
+  @apply flex items-center gap-2 px-4 py-3 text-sm hover:bg-gray-100;
+}
+
+.sheet-btn {
+  @apply block w-full py-3 rounded-xl text-center font-semibold bg-gray-200;
+}
+
+.sheet-btn.primary {
+  @apply bg-orange-500 text-white;
+}
+
+.sheet-btn.danger {
+  @apply bg-red-500 text-white;
+}
 
 

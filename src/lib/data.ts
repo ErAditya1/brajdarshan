@@ -280,55 +280,7 @@ export const festivals: Festival[] = [
 ];
 
 
-export const upcomingFestivals = [
-  {
-    id: 'uf-1',
-    name: 'Sharad Purnima',
-    slug: 'sharad-purnima',
-    date: 'October 28, 2024',
-    month: 'Oct',
-    day: '28',
-    location: 'Vrindavan',
-    type: 'Major Festival',
-    image: 'https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?q=80&w=1200',
-    description:
-      'The divine full moon night when Lord Krishna performed Maha Raas Leela.',
-    importance: 'High' as const,
-    tags: ['Raas Leela', 'Full Moon', 'Krishna Bhakti'],
-  },
 
-  {
-    id: 'uf-2',
-    name: 'Govardhan Puja',
-    slug: 'govardhan-puja',
-    date: 'November 2, 2024',
-    month: 'Nov',
-    day: '2',
-    location: 'Govardhan & Vrindavan',
-    type: 'Vaishnav Festival',
-    image: 'https://images.unsplash.com/photo-1587135991058-8816b028691f?q=80&w=1200',
-    description:
-      'Celebrates Lord Krishna lifting Govardhan Hill and the Annakut offering.',
-    importance: 'High' as const,
-    tags: ['Govardhan Hill', 'Annakut', 'Krishna Leela'],
-  },
-
-  {
-    id: 'uf-3',
-    name: 'Kartik Purnima',
-    slug: 'kartik-purnima',
-    date: 'November 15, 2024',
-    month: 'Nov',
-    day: '15',
-    location: 'Yamuna Ghats, Vrindavan',
-    type: 'Sacred Bath',
-    image: 'https://images.unsplash.com/photo-1646303297330-17073f7823c3?q=80&w=1200',
-    description:
-      'Devotees take a holy dip in the Yamuna and light lamps.',
-    importance: 'Medium' as const,
-    tags: ['Yamuna Snan', 'Deepdaan', 'Kartik Maas'],
-  },
-];
 
 
 

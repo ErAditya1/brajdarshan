@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { Filter, ChevronDown } from 'lucide-react';
+import { Filter, ChevronDown, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const CATEGORIES = ['All', 'Temple', 'Ghat', 'Forest'];
 const SORT_OPTIONS = ['Popularity', 'Distance', 'Rating'];
@@ -32,13 +33,21 @@ export default function PlacesHeader({
   return (
     <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
       {/* ================= Title ================= */}
-      <div>
-        <h1 className="text-3xl md:text-4xl font-serif font-bold text-foreground">
+      <div className='flex gap-4 items-center '>
+        <div>
+            <h1 className="text-3xl md:text-4xl font-serif font-bold text-foreground">
           Places in Braj
         </h1>
         <p className="text-muted-foreground mt-1">
           Explore temples, ghats, and sacred forests.
         </p>
+        </div>
+        <Link href="/places/new" className="float-end hidden sm:block">
+                  <Button className="flex items-center gap-2">
+                    <Plus className="w-4 h-4" />
+                    Add Place
+                  </Button>
+                </Link>
       </div>
 
       {/* ================= Actions ================= */}

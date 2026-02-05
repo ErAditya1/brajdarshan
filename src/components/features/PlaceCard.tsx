@@ -7,23 +7,25 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 interface PlaceCardProps {
-  id: string;
+
   slug: string;
   name: string;
   type: string;
-  image: string;
+  image: {
+    url:string
+  };
   description: string;
   rating: number;
   distance: string;
   timing?: string;
 }
 
-const PlaceCard: React.FC<PlaceCardProps> = ({ id,slug, name, type, image, description, rating, distance, timing }) => {
+const PlaceCard: React.FC<PlaceCardProps> = ({ slug, name, type, image, description, rating, distance, timing }) => {
   return (
     <Card className="overflow-hidden group hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
       <div className="relative h-48 overflow-hidden">
         <img
-          src={image}
+          src={image.url}
           alt={name}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
