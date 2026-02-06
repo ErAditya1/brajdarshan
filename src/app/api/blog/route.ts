@@ -60,9 +60,9 @@ export async function POST(req: Request) {
           image: {
             url: block.image.url,
             imageFileId: block.image.imageFileId,
-            
+
           },
-          
+
         };
       }
       return block;
@@ -82,7 +82,7 @@ export async function POST(req: Request) {
       title,
       slug,
       excerpt,
-      author:user?.id,
+      author: user?.id,
       coverImage,
       blocks: normalizedBlocks,
       tags,
@@ -93,23 +93,23 @@ export async function POST(req: Request) {
       seo,
       featured,
       status: status ?? "draft",
-      
+
     });
 
 
     await UploadedImage.findOneAndUpdate(
-                { imageFileId: blog.coverImage.imageFileId },
-                {  status: "published" },
-        );
+      { imageFileId: blog.coverImage.imageFileId },
+      { status: "published" },
+    );
 
-        blog.blocks.map(async(block:any)=>{
-            if(block.type==='image' && block.image.imageFileId){
-                 await UploadedImage.findOneAndUpdate(
-                { imageFileId: block.image.imageFileId },
-                {  status: "published" },
+    blog.blocks.map(async (block: any) => {
+      if (block.type === 'image' && block.image.imageFileId) {
+        await UploadedImage.findOneAndUpdate(
+          { imageFileId: block.image.imageFileId },
+          { status: "published" },
         );
-            }
-        })
+      }
+    })
 
     return NextResponse.json(
       { success: true, data: blog },
@@ -124,3 +124,21 @@ export async function POST(req: Request) {
   }
 }
 
+
+
+export async function GET(req: Request) {
+  try {
+    await connectToDatabase();
+    const blogs = await Blog.find({ status: "published" }).lean()
+    return NextResponse.json(
+      { success: true, data: blogs },
+      { status: 201 }
+    );
+  } catch (err: any) {
+    console.error("Fetch blog error:", err);
+    return NextResponse.json(
+      { success: false, message: err.message || "Failed to fetch blog" },
+      { status: 500 }
+    );
+  }
+}
