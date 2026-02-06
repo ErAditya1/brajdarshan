@@ -129,7 +129,9 @@ export async function POST(req: Request) {
 export async function GET(req: Request) {
   try {
     await connectToDatabase();
-    const blogs = await Blog.find({ status: "published" }).lean()
+    const blogs = await Blog.find({ status: "published" })
+    .populate("author", "name avatar role")
+    .lean()
     return NextResponse.json(
       { success: true, data: blogs },
       { status: 201 }
